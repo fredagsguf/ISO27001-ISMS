@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Never commit evidence, exports or personal data to this repository.
+evidence/
+exports/

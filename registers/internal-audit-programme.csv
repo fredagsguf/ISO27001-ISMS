@@ -1,0 +1,5 @@
+audit_id,planned_quarter,scope,clauses_controls,auditor,independence_confirmed,status,report_reference,findings_count
+IA-2027-01,{{YYYY}}-Q1,"ISMS core: context, leadership, planning","4;5;6",{{AUDITOR}},No,Planned,,
+IA-2027-02,{{YYYY}}-Q2,"Support, operation and risk treatment","7;8;5.15-5.18;8.2-8.5",{{AUDITOR}},No,Planned,,
+IA-2027-03,{{YYYY}}-Q3,"Supplier, incident and continuity controls","5.19-5.30",{{AUDITOR}},No,Planned,,
+IA-2027-04,{{YYYY}}-Q4,"Technological controls; performance evaluation and improvement","8.7-8.34;9;10",{{AUDITOR}},No,Planned,,

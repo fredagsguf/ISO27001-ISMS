@@ -1,0 +1,6 @@
+party_id,interested_party,internal_external,needs_and_expectations,addressed_by_isms,how_addressed,climate_change_relevant,owner,last_reviewed
+IP-001,Customers,External,"Confidentiality and availability of their data; evidence of certification",Yes,"Certification; contractual security clauses; incident notification",No,{{CEO}},
+IP-002,Employees,Internal,"Clear rules; protection of personal data; secure tools",Yes,"Policies; awareness training; privacy controls",No,{{HR_LEAD}},
+IP-003,Regulators / supervisory authorities,External,"Compliance with data protection and sector law (e.g. GDPR, NIS2)",Yes,"Legal register; breach notification procedure",No,{{CISO}},
+IP-004,Suppliers and cloud providers,External,"Clear security requirements; timely payment; cooperation in incidents",Yes,"Supplier security policy; agreements",No,{{PROCUREMENT_LEAD}},
+IP-005,Shareholders / owners,External,"Business continuity; reputation; climate-related resilience",Yes,"Risk management; BC/ICT readiness; management review",Yes,{{CEO}},

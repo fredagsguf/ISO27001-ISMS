@@ -1,0 +1,3 @@
+asset_id,name,type,description,owner,location,classification,confidentiality,integrity,availability,dependencies,status,last_reviewed
+A-001,Production database,Information,Customer and transaction data,{{CTO}},{{CLOUD_REGION}},Confidential,3,3,3,A-002,Active,
+A-002,Cloud platform tenant,Service,IaaS/PaaS hosting the production environment,{{CTO}},{{CLOUD_PROVIDER}},Internal,3,3,3,,Active,

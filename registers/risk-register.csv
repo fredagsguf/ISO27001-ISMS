@@ -1,0 +1,3 @@
+risk_id,asset_ids,threat,vulnerability,risk_owner,likelihood,impact,inherent_score,treatment_option,annex_a_controls,treatment_actions,residual_likelihood,residual_impact,residual_score,acceptance_status,date_identified,last_reviewed
+R-001,A-001,Ransomware encrypts production data,Backups reachable from production network,{{CTO}},3,5,15,Modify,8.7;8.13;8.22,"Immutable offsite backups; network segmentation of backup infrastructure; quarterly restore test",2,3,6,Pending,2026-10-21,
+R-002,A-002,Account takeover of cloud admin console,Password-only authentication for administrators,{{CTO}},4,4,16,Modify,5.17;8.2;8.5,"Enforce phishing-resistant MFA for all privileged accounts; quarterly privileged access review",1,4,4,Pending,2026-10-21,

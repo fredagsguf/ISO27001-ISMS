@@ -1,0 +1,4 @@
+req_id,requirement,type,jurisdiction,applies_to,obligations_summary,isms_controls,owner,compliance_status,last_reviewed
+L-001,General Data Protection Regulation (EU) 2016/679,Statutory,EU/EEA,Processing of personal data,"Lawful processing; security of processing (Art. 32); breach notification within 72h (Art. 33)",5.34;5.24;5.26,{{DPO}},Not assessed,
+L-002,NIS2 Directive (EU) 2022/2555 and national transposition,Statutory,EU,{{CONFIRM_IF_IN_SCOPE}},"Risk management measures; incident reporting (24h early warning / 72h notification); management accountability",5.24;5.31;5.4,{{CISO}},Not assessed,
+L-003,Customer contracts / DPAs,Contractual,Per contract,Customer data,"Security schedules; audit rights; notification timelines",5.20;5.31,{{LEGAL_LEAD}},Not assessed,
