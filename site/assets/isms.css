@@ -1,0 +1,97 @@
+:root {
+  --isms-low: #2e7d32;
+  --isms-medium: #f9a825;
+  --isms-high: #ef6c00;
+  --isms-critical: #c62828;
+}
+
+/* Unfilled template placeholders */
+.placeholder {
+  background: color-mix(in srgb, var(--isms-medium) 25%, transparent);
+  border-radius: 3px;
+  padding: 0 .2em;
+  font-family: var(--md-code-font-family);
+  font-size: .9em;
+}
+
+/* Document metadata block */
+.doc-meta table { font-size: .72rem; }
+.doc-meta th { white-space: nowrap; }
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: .05em .55em;
+  border-radius: 1em;
+  font-size: .75em;
+  font-weight: 600;
+  color: #fff;
+  background: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}
+.badge--approved, .badge--implemented, .badge--yes, .badge--accepted, .badge--closed { background: var(--isms-low); }
+.badge--draft, .badge--partially-implemented, .badge--tbd, .badge--pending, .badge--open, .badge--planned { background: var(--isms-medium); color: #000; }
+.badge--not-implemented, .badge--rejected { background: var(--isms-critical); }
+.badge--no, .badge--retired, .badge--not-applicable, .badge--not-assessed { background: var(--md-default-fg-color--lighter); color: var(--md-default-fg-color); }
+
+/* Dashboard tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: .8rem; margin: 1rem 0; }
+.tile { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .4rem; padding: .8rem 1rem; }
+.tile__value { font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+.tile__label { font-size: .7rem; color: var(--md-default-fg-color--light); }
+
+/* Progress bars */
+.bar { display: flex; height: .6rem; border-radius: .3rem; overflow: hidden; background: var(--md-default-fg-color--lightest); }
+.bar > span { display: block; height: 100%; }
+
+/* Risk heat map */
+.md-typeset table.heatmap { text-align: center; }
+.md-typeset table.heatmap td, .md-typeset table.heatmap th { text-align: center; min-width: 2.6rem; }
+.heat--low { background: color-mix(in srgb, var(--isms-low) 35%, transparent); }
+.heat--medium { background: color-mix(in srgb, var(--isms-medium) 45%, transparent); }
+.heat--high { background: color-mix(in srgb, var(--isms-high) 50%, transparent); }
+.heat--critical { background: color-mix(in srgb, var(--isms-critical) 55%, transparent); color: #fff; }
+
+/* Registers */
+.register-tools { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; margin: .6rem 0; }
+.register-tools input {
+  flex: 1 1 14rem;
+  padding: .4rem .6rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: .2rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font: inherit;
+  font-size: .75rem;
+}
+.register-count { font-size: .7rem; color: var(--md-default-fg-color--light); }
+.md-typeset table.register { font-size: .68rem; }
+.md-typeset table.register th { cursor: pointer; user-select: none; white-space: nowrap; }
+.md-typeset table.register th[aria-sort="ascending"]::after { content: " ▲"; }
+.md-typeset table.register th[aria-sort="descending"]::after { content: " ▼"; }
+.md-typeset a.tile { color: inherit; display: block; }
+.md-typeset a.tile:hover { border-color: var(--md-accent-fg-color); }
+
+/* Material only styles tables without a class; give register tables the same look */
+.md-typeset table.register, .md-typeset table.heatmap {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: .05rem solid var(--md-typeset-table-color);
+  border-radius: .1rem;
+  background-color: var(--md-default-bg-color);
+}
+.md-typeset table.register th, .md-typeset table.register td,
+.md-typeset table.heatmap th, .md-typeset table.heatmap td {
+  padding: .5em .8em;
+  vertical-align: top;
+  border-top: .05rem solid var(--md-typeset-table-color);
+}
+.md-typeset table.register thead th, .md-typeset table.heatmap thead th {
+  border-top: none;
+  font-weight: 700;
+  text-align: left;
+}
+.md-typeset table.register tbody tr:hover { background-color: var(--md-typeset-table-color--light, rgba(0,0,0,.035)); }
+.md-typeset table.register tr:target { outline: 2px solid var(--md-accent-fg-color); outline-offset: -2px; }
+.md-typeset table.register td:first-child { white-space: nowrap; }

@@ -16,6 +16,39 @@ docs/                    ISMS core documents, organized by clause (4–10)
 policies/                Topic-specific policies supporting Annex A controls
 registers/               CSV registers: SoA, risks, assets, interested parties, legal, audits, NCs
 tools/validate_isms.py   Consistency checks (run locally and in CI)
+tools/build_site.py      Renders documents and registers into the ISMS Portal website
+site/                    Website theme config, assets and nginx config
+Dockerfile               Builds and serves the ISMS Portal
+```
+
+## ISMS Portal (website in Docker)
+The repository is published as a read-only website with:
+- a **dashboard**: approval status, SoA progress per theme, risk heat maps (inherent and residual), open nonconformities, validation results
+- every policy and procedure, with a metadata block and links between documents
+- **registers** as filterable, sortable tables with CSV download and deep links (for example `/registers/risk-register/#R-001` or `#ctrl-5.15` in the SoA)
+- full-text search, and light and dark mode
+
+Run it:
+```sh
+docker compose up -d --build        # http://127.0.0.1:8080
+```
+or without Compose:
+```sh
+docker build -t isms-portal .
+docker run -d -p 127.0.0.1:8080:8080 --read-only --tmpfs /tmp --cap-drop ALL isms-portal
+```
+Build options: `--build-arg ISMS_SITE_NAME="Acme ISMS"` sets the site title. `--build-arg STRICT=--strict` fails the build on validator warnings.
+
+How it works: a multi-stage build runs the validator, generates the pages (`tools/build_site.py`), and builds the site with `mkdocs build --strict`, which fails on broken links. The output is served by unprivileged nginx (port 8080, non-root, read-only filesystem) with security headers, `noindex`, and a `/healthz` endpoint. The page loads no third-party resources.
+
+Rebuild the image after every merge to `main` so the portal shows the approved state. The portal is a read-only view; changes still go through pull requests.
+
+> **Access:** the content is classified **Internal**. Compose binds to `127.0.0.1` on purpose. To share the portal, put it behind an authenticating reverse proxy (for example SSO through oauth2-proxy, Cloudflare Access or your ingress) or a VPN. Never expose it unauthenticated to the internet.
+
+Preview without Docker:
+```sh
+pip install -r site/requirements.txt
+python tools/build_site.py && mkdocs serve -f build/mkdocs.yml
 ```
 
 ## Mandatory documented information map

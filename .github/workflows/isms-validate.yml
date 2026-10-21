@@ -18,3 +18,18 @@ jobs:
           python-version: "3.12"
       # Switch to --strict once the ISMS is populated and ready for audit.
       - run: python tools/validate_isms.py --quiet
+
+  site:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # The image build validates the content, renders the site with
+      # mkdocs --strict (fails on broken links) and packages it with nginx.
+      - run: docker build -t isms-portal:ci .
+      - name: Smoke test container
+        run: |
+          docker run -d --name isms -p 8080:8080 isms-portal:ci
+          for i in $(seq 1 15); do curl -sf http://127.0.0.1:8080/healthz && break; sleep 1; done
+          curl -sf http://127.0.0.1:8080/ | grep -q "ISMS Dashboard"
+          curl -sf http://127.0.0.1:8080/registers/statement-of-applicability/ | grep -q "Statement of Applicability"

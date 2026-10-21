@@ -4,3 +4,4 @@ __pycache__/
 # Never commit evidence, exports or personal data to this repository.
 evidence/
 exports/
+build/

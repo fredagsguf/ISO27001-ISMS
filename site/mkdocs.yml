@@ -1,0 +1,61 @@
+# Base MkDocs configuration. tools/build_site.py adds docs_dir and nav and
+# writes the final config to build/mkdocs.yml.
+site_name: ISMS Portal
+site_description: ISO/IEC 27001:2022 (+Amd 1:2024) Information Security Management System
+copyright: "Classification: Internal - do not distribute outside the organization"
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  icon:
+    logo: material/shield-lock
+  favicon: assets/favicon.svg
+  font: false  # system fonts; no requests to Google Fonts
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle: {icon: material/weather-night, name: Switch to dark mode}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle: {icon: material/weather-sunny, name: Switch to light mode}
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - toc.follow
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - assets/isms.css
+extra_javascript:
+  - assets/isms.js
+
+# Tooltips for the page status icons driven by each document's `status` front matter.
+extra:
+  status:
+    Draft: Draft - not yet approved
+    Approved: Approved
+    Retired: Retired - kept for reference only
