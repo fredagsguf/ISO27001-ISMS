@@ -1,3 +1,8 @@
+# Deployment compose file (used as-is by Coolify and other PaaS/reverse proxies).
+# No host ports are published: the proxy reaches the container on its internal
+# network at port 8080. In Coolify, set the service domain to
+# https://isms.example.com:8080 (the ":8080" tells the proxy the container port).
+# For local use, docker-compose.override.yml adds a localhost-only port mapping.
 services:
   isms:
     build:
@@ -5,11 +10,8 @@ services:
       args:
         ISMS_SITE_NAME: "ISMS Portal"
     image: isms-portal:latest
-    container_name: isms-portal
-    # Bound to localhost by default: the ISMS is classified Internal.
-    # Publish it only behind an authenticating reverse proxy or VPN.
-    ports:
-      - "127.0.0.1:8080:8080"
+    expose:
+      - "8080"
     read_only: true
     tmpfs:
       - /tmp

@@ -1,0 +1,7 @@
+# Local development only. `docker compose up` merges this file automatically;
+# deployments that pass `-f docker-compose.yml` (such as Coolify) ignore it.
+# Bound to localhost because the ISMS content is classified Internal.
+services:
+  isms:
+    ports:
+      - "127.0.0.1:8080:8080"

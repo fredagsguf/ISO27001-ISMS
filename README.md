@@ -28,10 +28,18 @@ The repository is published as a read-only website with:
 - **registers** as filterable, sortable tables with CSV download and deep links (for example `/registers/risk-register/#R-001` or `#ctrl-5.15` in the SoA)
 - full-text search, and light and dark mode
 
-Run it:
+Run it locally:
 ```sh
 docker compose up -d --build        # http://127.0.0.1:8080
 ```
+`docker-compose.yml` publishes no host ports. Locally, `docker-compose.override.yml` adds the localhost-only port mapping.
+
+Deploy with **Coolify** (or any reverse proxy on a shared Docker network):
+1. Create a *Docker Compose* resource from this repository, branch `main`, compose file `docker-compose.yml`.
+2. On the `isms` service, set the domain to `https://isms.example.com:8080`. The `:8080` tells the proxy which container port to use; it is not published on the host.
+3. Protect the domain with authentication before sharing it (see **Access** below).
+
+Do not add `ports:` to `docker-compose.yml` for deployment. It binds the host port, which conflicts with other services (`port is already allocated`) and bypasses the proxy.
 or without Compose:
 ```sh
 docker build -t isms-portal .
